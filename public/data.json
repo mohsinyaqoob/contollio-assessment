@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Lorem ipsum",
+    "attributes": [
+      { "name": "length", "value": 10, "unit": "m" },
+      { "name": "width", "value": 7, "unit": "m" },
+      { "name": "height", "value": 3, "unit": "m" },
+      { "name": "weight", "value": 4, "unit": "kg" }
+    ]
+  },
+  {
+    "title": "Donec convallis",
+    "attributes": [
+      { "name": "length", "value": 4, "unit": "m" },
+      { "name": "width", "value": 3, "unit": "m" },
+      { "name": "height", "value": 2, "unit": "m" },
+      { "name": "weight", "value": 1, "unit": "kg" }
+    ]
+  },
+  {
+    "title": "Vivamus sed",
+    "attributes": [
+      { "name": "length", "value": 7, "unit": "m" },
+      { "name": "width", "value": 10, "unit": "m" },
+      { "name": "height", "value": 2, "unit": "m" },
+      { "name": "weight", "value": 8, "unit": "kg" }
+    ]
+  },
+  {
+    "title": "Ut tempor",
+    "attributes": [
+      { "name": "length", "value": 9, "unit": "m" },
+      { "name": "width", "value": 9, "unit": "m" },
+      { "name": "height", "value": 9, "unit": "m" },
+      { "name": "weight", "value": 9, "unit": "kg" }
+    ]
+  }
+]
