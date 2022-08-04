@@ -32,8 +32,10 @@ export default class Dashboard extends Component<Props, State> {
     isLoaded: false,
     data: [],
     currentItem: 0,
-    labels: [],
-    datasets: [],
+    chartData: {
+      labels: ["length", "width", "height", "weight"],
+      datasets: [],
+    },
   };
 
   options = {
@@ -54,26 +56,26 @@ export default class Dashboard extends Component<Props, State> {
       .then((res) => res.json())
       .then(
         (result) => {
-          const labels = result[0].attributes.map((attr: any) => attr.name);
+          const labels = result[this.state.currentItem].attributes.map(
+            (attr: any) => attr.name
+          );
           this.setState({
             ...this.state,
             isLoaded: true,
             data: result,
-            labels,
-            datasets: [
-              {
-                label: "height",
-                data: 200,
-                borderColor: "rgb(255, 99, 132)",
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
-              },
-              {
-                label: "weight",
-                data: 300,
-                borderColor: "rgb(53, 162, 235)",
-                backgroundColor: "rgba(53, 162, 235, 0.5)",
-              },
-            ],
+            chartData: {
+              labels,
+              datasets: [
+                {
+                  label: "Value",
+                  data: result[this.state.currentItem].attributes.map(
+                    (attr: any) => attr.value
+                  ),
+                  borderColor: "rgb(255, 99, 132)",
+                  backgroundColor: "lightgreen",
+                },
+              ],
+            },
           });
         },
         // Note: it's important to handle errors here
@@ -89,29 +91,26 @@ export default class Dashboard extends Component<Props, State> {
   }
 
   handleOnChange = (value: any) => {
+    const labels = this.state.data[value].attributes.map(
+      (attr: any) => attr.name
+    );
+
     this.setState({
       currentItem: value,
+      chartData: {
+        labels,
+        datasets: [
+          {
+            label: "Value",
+            data: this.state.data[value].attributes.map(
+              (attr: any) => attr.value
+            ),
+            borderColor: "rgb(255, 99, 132)",
+            backgroundColor: "lightgreen",
+          },
+        ],
+      },
     });
-  };
-
-  labels = ["length", "width", "height", "weight"];
-
-  data = {
-    labels: this.labels,
-    datasets: [
-      {
-        label: "length",
-        data: this.labels.map(() => 200),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
-        label: "width",
-        data: this.labels.map(() => 200),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-    ],
   };
 
   render() {
@@ -152,7 +151,7 @@ export default class Dashboard extends Component<Props, State> {
                   }}
                 >
                   {/* Render Bar CHart Here */}
-                  <Bar options={this.options} data={this.data} />
+                  <Bar options={this.options} data={this.state.chartData} />
                 </div>
               </div>
             </div>
