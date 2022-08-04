@@ -166,6 +166,9 @@ export default class Dashboard extends Component<Props, State> {
                 min={0}
                 max={data.length - 1}
               />
+              <p className="range-slider-footer">
+                Drag the range slider to switch to next data item(s)
+              </p>
             </div>
           </div>
         )}

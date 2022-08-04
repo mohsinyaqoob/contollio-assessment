@@ -54,6 +54,10 @@
     text-align: left;
 }
 
+.data-table>table thead {
+    height: 32px
+}
+
 
 .item-footer>input[type=range] {
     width: 100%;
@@ -63,4 +67,8 @@
     .item-body {
         flex-direction: column;
     }
+}
+
+.range-slider-footer {
+    text-align: center;
 }

@@ -34,7 +34,7 @@
     margin-bottom: 8px;
 }
 
-.form-control>input {
+.form-control>input[type=text] {
     height: 40px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -45,9 +45,12 @@
 
 .form-control>input[type=button] {
     margin-top: 20px;
+    height: 40px;
+    font-size: 14px;
+    // border-radius: 4px;
 }
 
-.form-control>input[type=button]:hover {
-    background-color: rgb(0, 75, 166);
-    cursor: pointer;
-}
+// .form-control>input[type=button]:hover {
+//     background-color: rgb(0, 75, 166);
+//     cursor: pointer;
+// }
