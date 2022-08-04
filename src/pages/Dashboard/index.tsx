@@ -50,12 +50,10 @@ export default class Dashboard extends Component<Props, State> {
   };
 
   componentDidMount() {
-    console.log("State Changed");
     fetch("/data.json")
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log(result);
           const labels = result[0].attributes.map((attr: any) => attr.name);
           this.setState({
             ...this.state,

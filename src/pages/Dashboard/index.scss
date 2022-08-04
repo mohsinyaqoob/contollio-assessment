@@ -27,6 +27,7 @@
     background-color: #fff;
     padding: 16px;
     border-radius: 8px;
+
 }
 
 .item-footer {
@@ -66,6 +67,12 @@
 @media (max-width: 500px) {
     .item-body {
         flex-direction: column;
+        overflow: scroll;
+        overflow-y: hidden;
+    }
+
+    .data-chart>div {
+        margin: auto
     }
 }
 

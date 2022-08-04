@@ -1,30 +1,39 @@
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { runInThisContext } from "vm";
 import "./index.scss";
 
-type Props = {};
+export default class LoginForm extends Component<any, { [key: string]: any }> {
+  constructor(props: any) {
+    super(props);
 
-type State = {};
-
-export default class LoginForm extends Component<Props, State> {
-  /**
-   *
-   */
-  state = {
-    username: "",
-    password: "",
-  };
+    this.state = {
+      username: "",
+      password: "",
+      redirect: false,
+    };
+  }
 
   handleChange = (e: any) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleSubmit = (e: any) => {
+    e.preventDefault();
+    const { username, password } = this.state;
+    if (username && password) {
+      this.setState({ redirect: true });
+    }
+  };
+
   render() {
     const { username, password } = this.state;
+
     return (
       <div className="login-form-wrapper">
         <div className="login-form-container">
-          <form action="#" autoComplete="off">
+          <form action="#" autoComplete="off" onSubmit={this.handleSubmit}>
             <div className="login-form-header">
               <h2>Login to Contollio</h2>
               <p>
@@ -57,7 +66,7 @@ export default class LoginForm extends Component<Props, State> {
             <div className="login-form-footer">
               <div className="form-control">
                 <input
-                  type="button"
+                  type="submit"
                   value="Sign In"
                   disabled={username && password ? false : true}
                 />
@@ -65,6 +74,7 @@ export default class LoginForm extends Component<Props, State> {
             </div>
           </form>
         </div>
+        {this.state.redirect && <Navigate to="/dashboard" replace={true} />}
       </div>
     );
   }
