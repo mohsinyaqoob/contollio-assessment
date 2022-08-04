@@ -144,12 +144,7 @@ export default class Dashboard extends Component<Props, State> {
                 </table>
               </div>
               <div className="data-chart">
-                <div
-                  style={{
-                    width: "400px",
-                    height: "300px",
-                  }}
-                >
+                <div className="graph-border">
                   {/* Render Bar CHart Here */}
                   <Bar options={this.options} data={this.state.chartData} />
                 </div>
